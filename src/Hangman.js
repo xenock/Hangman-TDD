@@ -49,13 +49,14 @@ function Hangman() {
     "Some scripting languages",
   ]
   this.letters = []
+  this.mysteriousWord = []
 }
 
 Hangman.prototype.getWord = function() {
-  return this.dictionary[this.randomNumber(this.dictionary.length)]
+  return this.dictionary[this._randomNumber(this.dictionary.length)]
 }
 
-Hangman.prototype.randomNumber = function(max) {
+Hangman.prototype._randomNumber = function(max) {
   return Math.floor(Math.random() * max)
 }
 

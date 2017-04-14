@@ -22,6 +22,11 @@ describe('Hangman', function(){
         expect(hangman.letters.length == 0).toBe(true)
       })
     })
+    describe('mysteriousWord', function() {
+      it('should be an array', function() {
+        expect(Array.isArray(hangman.mysteriousWord)).toBe(true)
+      })
+    })
   })
 
   describe('Functions', function() {
@@ -43,11 +48,11 @@ describe('Hangman', function(){
     })
     describe('randomNumber', function() {
       it('should be a function', function() {
-        expect(typeof(hangman.randomNumber)).toBe('function')
+        expect(typeof(hangman._randomNumber)).toBe('function')
       })
       it('should return a random number between 0 and dictionary.length', function() {
         var l = hangman.dictionary.length
-        expect(hangman.randomNumber(l) != hangman.randomNumber(l)).toBe(true)
+        expect(hangman._randomNumber(l) != hangman._randomNumber(l)).toBe(true)
       })
     })
     describe('pushLetters', function() {
