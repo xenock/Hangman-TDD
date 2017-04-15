@@ -50,6 +50,7 @@ function Hangman() {
   ]
   this.letters = []
   this.mysteriousWord = []
+  this.chosenWord = []
 }
 
 Hangman.prototype.getWord = function() {
@@ -62,4 +63,15 @@ Hangman.prototype._randomNumber = function(max) {
 
 Hangman.prototype.pushLetters = function(letter){
   return this.letters.push(letter)
+}
+
+Hangman.prototype.initGame = function(){
+  return this.chosenWord.push(this.getWord().split(''))
+}
+
+Hangman.prototype.searchForCoincidences = function(){
+  var lastPosition = this.letters.length-1
+  var lastLetter = this.letters[lastPosition]
+  var word = this.chosenWord[0]
+  return word.indexOf(lastLetter, 0)
 }

@@ -64,5 +64,24 @@ describe('Hangman', function(){
         expect(hangman.letters[0] === 'a').toBe(true)
       })
     })
+    describe('initGame', function(){
+      it('should be a function', function(){
+        expect(typeof(hangman.initGame)).toBe('function')
+      })
+      it('should choose a word', function(){
+        hangman.initGame()
+        expect(hangman.chosenWord.length > 0).toBe(true)
+      })
+    })
+    describe('searchForCoincidences', function(){
+      it('should be a function', function(){
+        expect(typeof(hangman.searchForCoincidences)).toBe('function')
+      })
+      it('should find last letter introduced', function(){
+        hangman.chosenWord[0] = ['w','o','r','d']
+        hangman.letters = ['a', 'o']
+        expect(hangman.searchForCoincidences()).toBe(1)
+      })
+    })
   })
 })
