@@ -75,12 +75,23 @@ describe('Hangman', function(){
     })
     describe('searchForCoincidences', function(){
       it('should be a function', function(){
-        expect(typeof(hangman.searchForCoincidences)).toBe('function')
+        expect(typeof(hangman._searchForCoincidences)).toBe('function')
       })
-      it('should find last letter introduced', function(){
-        hangman.chosenWord[0] = ['w','o','r','d']
+      it('should find last letter introduced if exists', function(){
+        hangman.chosenWord[0] = 'word'
         hangman.letters = ['a', 'o']
-        expect(hangman.searchForCoincidences()).toBe(1)
+        expect(hangman._searchForCoincidences().length > 0).toBe(true)
+      })
+      it('should return empty array if not exists', function(){
+        hangman.chosenWord[0] = 'word'
+        hangman.letters = ['a', 'e']
+        expect(hangman._searchForCoincidences().length == 0).toBe(true)
+      })
+      it('should find all coincidences for letters', function(){
+        hangman.chosenWord[0] = 'mama'
+        hangman.letters = ['o', 'a']
+        expect(hangman._searchForCoincidences()[0] === 1).toBe(true)
+        expect(hangman._searchForCoincidences()[1] === 3).toBe(true)
       })
     })
   })

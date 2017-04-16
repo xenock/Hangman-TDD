@@ -66,12 +66,16 @@ Hangman.prototype.pushLetters = function(letter){
 }
 
 Hangman.prototype.initGame = function(){
-  return this.chosenWord.push(this.getWord().split(''))
+  return this.chosenWord.push(this.getWord())
 }
 
-Hangman.prototype.searchForCoincidences = function(){
+Hangman.prototype._searchForCoincidences = function(){
   var lastPosition = this.letters.length-1
-  var lastLetter = this.letters[lastPosition]
-  var word = this.chosenWord[0]
-  return word.indexOf(lastLetter, 0)
+  var letter = this.letters[lastPosition]
+  var word = this.chosenWord[0].toString()
+  var indexes = []
+  for(var i=0; i<word.length;i++){
+    if(word[i] === letter) indexes.push(i)
+  }
+  return indexes
 }
