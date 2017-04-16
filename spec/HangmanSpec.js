@@ -94,5 +94,14 @@ describe('Hangman', function(){
         expect(hangman._searchForCoincidences()[1] === 3).toBe(true)
       })
     })
+    describe('lastLetterIntroduced', function(){
+      it('should be a function', function(){
+        expect(typeof(hangman._lastLetterIntroduced)).toBe('function')
+      })
+      it('should return the last letter', function(){
+        hangman.letters = ['o', 'a']
+        expect(hangman._lastLetterIntroduced()).toBe('a')
+      })
+    })
   })
 })

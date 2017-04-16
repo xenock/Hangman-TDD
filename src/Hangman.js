@@ -70,12 +70,15 @@ Hangman.prototype.initGame = function(){
 }
 
 Hangman.prototype._searchForCoincidences = function(){
-  var lastPosition = this.letters.length-1
-  var letter = this.letters[lastPosition]
-  var word = this.chosenWord[0].toString()
+  var letter = this._lastLetterIntroduced()
+  var word = this.chosenWord[0]
   var indexes = []
   for(var i=0; i<word.length;i++){
     if(word[i] === letter) indexes.push(i)
   }
   return indexes
+}
+
+Hangman.prototype._lastLetterIntroduced = function() {
+  return this.letters[this.letters.length-1]
 }
